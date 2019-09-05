@@ -1,0 +1,446 @@
+-- Created by Vertabelo (http://vertabelo.com)
+-- Last modification date: 2019-09-02 14:21:33.743
+
+-- tables
+-- Table: baselinefaunalcluster
+CREATE TABLE baselinefaunalcluster (
+    faunalcluster varchar(20)  NOT NULL,
+    CONSTRAINT baselinefaunalcluster_pk PRIMARY KEY (faunalcluster)
+);
+
+-- Table: baselinephycluster
+CREATE TABLE baselinephycluster (
+    phycluster varchar(20)  NOT NULL,
+    CONSTRAINT baselinephycluster_pk PRIMARY KEY (phycluster)
+);
+
+-- Table: cluster
+CREATE TABLE cluster (
+    id int  NOT NULL,
+    sample_samplecode varchar(100)  NOT NULL,
+    baselinefaunalcluster_faunalcluster varchar(20)  NOT NULL,
+    baselinephycluster_phycluster varchar(20)  NOT NULL,
+    phyfaunalcluster varchar(20)  NOT NULL,
+    CONSTRAINT cluster_pk PRIMARY KEY (id)
+);
+
+-- Table: envvar
+CREATE TABLE envvar (
+    name varchar(50)  NOT NULL,
+    units varchar(20)  NULL,
+    CONSTRAINT envvar_pk PRIMARY KEY (name)
+);
+
+-- Table: envvarsample
+CREATE TABLE envvarsample (
+    id int  NOT NULL,
+    sample_samplecode varchar(100)  NOT NULL,
+    envvar_name varchar(50)  NOT NULL,
+    value float  NOT NULL,
+    CONSTRAINT envvarsample_pk PRIMARY KEY (id)
+);
+
+-- Table: gear
+CREATE TABLE gear (
+    gearcode varchar(10)  NOT NULL,
+    geararea varchar(10)  NULL,
+    geartype_geartype varchar(20)  NOT NULL,
+    gearname varchar(100)  NOT NULL,
+    CONSTRAINT gear_pk PRIMARY KEY (gearcode)
+);
+
+-- Table: geartype
+CREATE TABLE geartype (
+    geartype varchar(20)  NOT NULL,
+    CONSTRAINT geartype_pk PRIMARY KEY (geartype)
+);
+
+-- Table: macroprocessinglab
+CREATE TABLE macroprocessinglab (
+    id int  NOT NULL,
+    macrolabname varchar(50)  NULL,
+    CONSTRAINT macroprocessinglab_pk PRIMARY KEY (id)
+);
+
+-- Table: owner
+CREATE TABLE owner (
+    ownername varchar(100)  NOT NULL,
+    source varchar(100)  NOT NULL,
+    sector varchar(20)  NOT NULL,
+    CONSTRAINT owner_pk PRIMARY KEY (ownername)
+);
+
+-- Table: psaprocessinglab
+CREATE TABLE psaprocessinglab (
+    id int  NOT NULL,
+    psalabname varchar(50)  NULL,
+    CONSTRAINT psaprocessinglab_pk PRIMARY KEY (id)
+);
+
+-- Table: sample
+CREATE TABLE sample (
+    id int  NOT NULL,
+    samplecode varchar(100)  NOT NULL,
+    samplelat float  NOT NULL,
+    samplelong float  NOT NULL,
+    waterdepth float  NULL,
+    year int  NULL,
+    month int  NULL,
+    date date  NULL,
+    grabsamplesize float  NULL,
+    macrosieve float  NULL,
+    samplecode2 varchar(100)  NULL,
+    psasubsample boolean  NULL,
+    samplenotes text  NULL,
+    treatment char(1)  NULL,
+    inccol boolean  NULL,
+    samplephotowhole bytea  NULL,
+    samplephotoresidue bytea  NULL,
+    gear_gearcode varchar(10)  NOT NULL,
+    baselinesample boolean  NOT NULL,
+    psaprocessinglab_id int  NOT NULL,
+    macroprocessinglab_id int  NOT NULL,
+    in_mpa boolean  NOT NULL,
+    mpa_gid int  NOT NULL,
+    CONSTRAINT sample_pk PRIMARY KEY (samplecode)
+);
+
+-- Table: sample_spatial
+CREATE TABLE sample_spatial (
+    id serial  NOT NULL,
+    sample_samplecode varchar(100)  NOT NULL,
+    spatialrelations_spatialrelid int  NOT NULL,
+    CONSTRAINT sample_spatial_pk PRIMARY KEY (id)
+);
+
+-- Table: sampleowner
+CREATE TABLE sampleowner (
+    id int  NOT NULL,
+    owner_ownername varchar(100)  NOT NULL,
+    sample_samplecode varchar(100)  NOT NULL,
+    CONSTRAINT sampleowner_pk PRIMARY KEY (id)
+);
+
+-- Table: samplestation
+CREATE TABLE samplestation (
+    id int  NOT NULL,
+    sample_samplecode varchar(100)  NOT NULL,
+    station_stationcode varchar(100)  NOT NULL,
+    CONSTRAINT samplestation_pk PRIMARY KEY (id)
+);
+
+-- Table: sedvar
+CREATE TABLE sedvar (
+    sievesize float  NOT NULL,
+    wentworthclass varchar(20)  NOT NULL,
+    CONSTRAINT sedvar_pk PRIMARY KEY (sievesize)
+);
+
+-- Table: sedvarsample
+CREATE TABLE sedvarsample (
+    id int  NOT NULL,
+    sample_samplecode varchar(100)  NOT NULL,
+    sedvar_sievesize float  NOT NULL,
+    percentage float  NOT NULL,
+    CONSTRAINT sedvarsample_pk PRIMARY KEY (id)
+);
+
+-- Table: spatialrelations
+CREATE TABLE spatialrelations (
+    spatialrelid int  NOT NULL,
+    inmpa boolean  NOT NULL,
+    mpagid int  NOT NULL,
+    inaggregatepiz boolean  NOT NULL,
+    inaggregatesiz boolean  NOT NULL,
+    aggregatepizgid int  NOT NULL,
+    aggregatesizgid int  NOT NULL,
+    CONSTRAINT spatialrelations_pk PRIMARY KEY (spatialrelid)
+);
+
+-- Table: station
+CREATE TABLE station (
+    stationcode varchar(50)  NOT NULL,
+    stationlong float  NOT NULL,
+    stationlat float  NOT NULL,
+    stationnotes varchar(200)  NULL,
+    stationsubgroup2 varchar(100)  NULL,
+    stationsubgroup1 varchar(50)  NULL,
+    stationgroup varchar(50)  NOT NULL,
+    CONSTRAINT station_pk PRIMARY KEY (stationcode)
+);
+
+-- Table: survey
+CREATE TABLE survey (
+    surveyname varchar(150)  NOT NULL,
+    programme varchar(20)  NULL,
+    surveypurpose varchar(50)  NULL,
+    datapubliclyavailable boolean  NOT NULL,
+    data char(1)  NOT NULL,
+    CONSTRAINT survey_pk PRIMARY KEY (surveyname)
+);
+
+-- Table: surveysample
+CREATE TABLE surveysample (
+    id int  NOT NULL,
+    survey_surveyname varchar(150)  NOT NULL,
+    sample_samplecode varchar(100)  NOT NULL,
+    CONSTRAINT surveysample_pk PRIMARY KEY (id)
+);
+
+-- Table: taxa
+CREATE TABLE taxa (
+    taxonname varchar(100)  NOT NULL,
+    countable boolean  NOT NULL,
+    aphiaid int  NULL,
+    matchtype varchar(20)  NULL,
+    lsid varchar(50)  NULL,
+    tsn int  NULL,
+    qualitystatus varchar(100)  NULL,
+    taxonstatus varchar(50)  NULL,
+    scientificname varchar(100)  NOT NULL,
+    authority varchar(100)  NULL,
+    aphiaidaccepted int  NULL,
+    scientificnameaccepted varchar(100)  NULL,
+    authorityaccepted varchar(100)  NULL,
+    kingdom varchar(20)  NOT NULL,
+    phylum varchar(20)  NOT NULL,
+    class varchar(50)  NOT NULL,
+    "order" varchar(50)  NOT NULL,
+    family varchar(50)  NOT NULL,
+    genus varchar(50)  NOT NULL,
+    subgenus varchar(50)  NULL,
+    species varchar(50)  NULL,
+    subspecies varchar(50)  NULL,
+    ismarine boolean  NULL,
+    isbrackish boolean  NULL,
+    isfresh boolean  NULL,
+    isterrestrial boolean  NULL,
+    citation text  NULL,
+    taxonnotes varchar(75)  NULL,
+    include boolean  NOT NULL,
+    nonnative boolean  NOT NULL,
+    conservationimportance boolean  NOT NULL,
+    taxaqual_qualifier varchar(10)  NOT NULL,
+    CONSTRAINT taxa_pk PRIMARY KEY (taxonname,taxaqual_qualifier)
+);
+
+-- Table: taxadetails
+CREATE TABLE taxadetails (
+    commonname varchar(200)  NOT NULL,
+    description text  NOT NULL,
+    habitat text  NOT NULL,
+    nativerange text  NOT NULL,
+    firstdiscovered text  NOT NULL,
+    pathway text  NOT NULL,
+    image_path text  NOT NULL,
+    taxa_taxonname varchar(100)  NOT NULL,
+    taxa_taxaqual_qualifier varchar(10)  NOT NULL,
+    scientificname varchar(150)  NOT NULL,
+    CONSTRAINT taxadetails_pk PRIMARY KEY (scientificname)
+);
+
+-- Table: taxaqual
+CREATE TABLE taxaqual (
+    qualifier varchar(10)  NOT NULL,
+    qualifiername varchar(20)  NOT NULL,
+    CONSTRAINT taxaqual_pk PRIMARY KEY (qualifier)
+);
+
+-- Table: taxasample
+CREATE TABLE taxasample (
+    id int  NOT NULL,
+    sample_samplecode varchar  NOT NULL,
+    taxa_taxonname varchar(100)  NOT NULL,
+    taxa_taxaqual_qualifier varchar(10)  NOT NULL,
+    abund int  NOT NULL,
+    biomass float  NULL,
+    CONSTRAINT taxasample_pk PRIMARY KEY (id)
+);
+
+-- foreign keys
+-- Reference: cluster_baselinefaunalcluster (table: cluster)
+ALTER TABLE cluster ADD CONSTRAINT cluster_baselinefaunalcluster
+    FOREIGN KEY (baselinefaunalcluster_faunalcluster)
+    REFERENCES baselinefaunalcluster (faunalcluster)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: cluster_baselinephycluster (table: cluster)
+ALTER TABLE cluster ADD CONSTRAINT cluster_baselinephycluster
+    FOREIGN KEY (baselinephycluster_phycluster)
+    REFERENCES baselinephycluster (phycluster)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: cluster_sample (table: cluster)
+ALTER TABLE cluster ADD CONSTRAINT cluster_sample
+    FOREIGN KEY (sample_samplecode)
+    REFERENCES sample (samplecode)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: envvarsample_envvar (table: envvarsample)
+ALTER TABLE envvarsample ADD CONSTRAINT envvarsample_envvar
+    FOREIGN KEY (envvar_name)
+    REFERENCES envvar (name)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: envvarsample_sample (table: envvarsample)
+ALTER TABLE envvarsample ADD CONSTRAINT envvarsample_sample
+    FOREIGN KEY (sample_samplecode)
+    REFERENCES sample (samplecode)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: gear_geartype (table: gear)
+ALTER TABLE gear ADD CONSTRAINT gear_geartype
+    FOREIGN KEY (geartype_geartype)
+    REFERENCES geartype (geartype)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: sample_gear (table: sample)
+ALTER TABLE sample ADD CONSTRAINT sample_gear
+    FOREIGN KEY (gear_gearcode)
+    REFERENCES gear (gearcode)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: sample_macroprocessinglab (table: sample)
+ALTER TABLE sample ADD CONSTRAINT sample_macroprocessinglab
+    FOREIGN KEY (macroprocessinglab_id)
+    REFERENCES macroprocessinglab (id)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: sample_psaprocessinglab (table: sample)
+ALTER TABLE sample ADD CONSTRAINT sample_psaprocessinglab
+    FOREIGN KEY (psaprocessinglab_id)
+    REFERENCES psaprocessinglab (id)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: sample_spatial_sample (table: sample_spatial)
+ALTER TABLE sample_spatial ADD CONSTRAINT sample_spatial_sample
+    FOREIGN KEY (sample_samplecode)
+    REFERENCES sample (samplecode)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: sample_spatial_spatialrelations (table: sample_spatial)
+ALTER TABLE sample_spatial ADD CONSTRAINT sample_spatial_spatialrelations
+    FOREIGN KEY (spatialrelations_spatialrelid)
+    REFERENCES spatialrelations (spatialrelid)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: sampleowner_owner (table: sampleowner)
+ALTER TABLE sampleowner ADD CONSTRAINT sampleowner_owner
+    FOREIGN KEY (owner_ownername)
+    REFERENCES owner (ownername)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: sampleowner_sample (table: sampleowner)
+ALTER TABLE sampleowner ADD CONSTRAINT sampleowner_sample
+    FOREIGN KEY (sample_samplecode)
+    REFERENCES sample (samplecode)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: samplestation_sample (table: samplestation)
+ALTER TABLE samplestation ADD CONSTRAINT samplestation_sample
+    FOREIGN KEY (sample_samplecode)
+    REFERENCES sample (samplecode)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: samplestation_station (table: samplestation)
+ALTER TABLE samplestation ADD CONSTRAINT samplestation_station
+    FOREIGN KEY (station_stationcode)
+    REFERENCES station (stationcode)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: sedvarsample_sample (table: sedvarsample)
+ALTER TABLE sedvarsample ADD CONSTRAINT sedvarsample_sample
+    FOREIGN KEY (sample_samplecode)
+    REFERENCES sample (samplecode)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: sedvarsample_sedvar (table: sedvarsample)
+ALTER TABLE sedvarsample ADD CONSTRAINT sedvarsample_sedvar
+    FOREIGN KEY (sedvar_sievesize)
+    REFERENCES sedvar (sievesize)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: surveysample_sample (table: surveysample)
+ALTER TABLE surveysample ADD CONSTRAINT surveysample_sample
+    FOREIGN KEY (sample_samplecode)
+    REFERENCES sample (samplecode)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: surveysample_survey (table: surveysample)
+ALTER TABLE surveysample ADD CONSTRAINT surveysample_survey
+    FOREIGN KEY (survey_surveyname)
+    REFERENCES survey (surveyname)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: taxa_taxaqual (table: taxa)
+ALTER TABLE taxa ADD CONSTRAINT taxa_taxaqual
+    FOREIGN KEY (taxaqual_qualifier)
+    REFERENCES taxaqual (qualifier)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: taxadetails_taxa (table: taxadetails)
+ALTER TABLE taxadetails ADD CONSTRAINT taxadetails_taxa
+    FOREIGN KEY (taxa_taxonname, taxa_taxaqual_qualifier)
+    REFERENCES taxa (taxonname, taxaqual_qualifier)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: taxasample_sample (table: taxasample)
+ALTER TABLE taxasample ADD CONSTRAINT taxasample_sample
+    FOREIGN KEY (sample_samplecode)
+    REFERENCES sample (samplecode)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: taxasample_taxa (table: taxasample)
+ALTER TABLE taxasample ADD CONSTRAINT taxasample_taxa
+    FOREIGN KEY (taxa_taxonname, taxa_taxaqual_qualifier)
+    REFERENCES taxa (taxonname, taxaqual_qualifier)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- End of file.
+
