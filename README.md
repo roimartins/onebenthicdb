@@ -70,3 +70,11 @@ FALSE,
 ### REMOVE RECORD FROM TABLE LINE BY LINE ####
 DELETE FROM sample
 WHERE samplecode = 'RSMP_H_0001_Baseline';
+
+2. Enter sed data into table 'sedvarsample'
+INSERT INTO sedvarsample (id,sample_samplecode,sedvar_sievesize,percentage) VALUES
+
+(606677,'RSMP_H_0001_Baseline',	'63',	0),
+(606678,'RSMP_H_0001_Baseline',	'45',	0),
+(606679,'RSMP_H_0001_Baseline',	'31.5',	0),
+(606680,'RSMP_H_0001_Baseline',	'22.4',	1.300148588);
