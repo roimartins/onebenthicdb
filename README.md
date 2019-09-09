@@ -8,13 +8,18 @@ COPY taxasample FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\tables\table_
 
 nb/ make sure permission given for everyone and file in .csv format
 
-### DELETE ALL DATA FROM TABLE ####
+### DELETE ALL DATA FROM TABLE
 DELETE FROM tablename
 
 ## BRING IN NEW DATA
-Start with 'sample' table
-#### ADD DATA TO sample TABLE LINE BY LINE ####
-notes: data in format '2014-09-27', missing info as NULL, Macrolab 7 (no macro)
+1. Start with 'sample' table
+
+# ADD DATA TO sample TABLE LINE BY LINE
+Notes:
+Date needs to be in format:'2014-09-27',
+Missing info as NULL, 
+If no macro data use macroprocessinglab_id = 7 (no macro).
+
 
 INSERT INTO sample (
 id,
@@ -62,6 +67,6 @@ FALSE,
 2,
 7);
 
-#### REMOVE RECORD FROM TABLE LINE BY LINE ####
+# REMOVE RECORD FROM TABLE LINE BY LINE ####
 DELETE FROM sample
-WHERE samplecode = '0000';
+WHERE samplecode = 'RSMP_H_0001_Baseline';
