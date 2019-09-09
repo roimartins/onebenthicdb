@@ -2,17 +2,17 @@
 SQL code from Vertabelo to create OneBenthicDB
 
 # DATA IMPORT PROCEDURES
-##   POPULATE TABLES ####
-#     ADD DATA FROM CSV FILE TO TABLE ####
+## POPULATE TABLES ####
+### ADD DATA FROM CSV FILE TO TABLE ####
 COPY taxasample FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\tables\table_taxasample.csv' WITH (FORMAT CSV, DELIMITER ',',NULL 'NA', HEADER);
 
 nb/ make sure permission given for everyone and file in .csv format
 
-#### DELETE ALL DATA FROM TABLE ####
+### DELETE ALL DATA FROM TABLE ####
 DELETE FROM tablename
 
-
-
+## BRING IN NEW DATA
+Start with 'sample' table
 #### ADD DATA TO sample TABLE LINE BY LINE ####
 notes: data in format '2014-09-27', missing info as NULL, Macrolab 7 (no macro)
 
