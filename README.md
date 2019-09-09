@@ -1,6 +1,11 @@
 # onebenthicdb
 SQL code from Vertabelo to create OneBenthicDB
 
+# CHANGES TO DB STRUCTURE (IN PG ADMIN)
+
+1. Table 'sedvarsample col: 'percentage' changes from Not NULL 'Yes' to Not NULL 'No'
+To make it clear which sieves have been used
+
 # DATA IMPORT PROCEDURES
 ## POPULATE TABLES ####
 ### ADD DATA FROM CSV FILE TO TABLE ####
