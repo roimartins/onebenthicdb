@@ -72,6 +72,7 @@ DELETE FROM sample
 WHERE samplecode = 'RSMP_H_0001_Baseline';
 
 2. Enter sed data into table 'sedvarsample'
+
 INSERT INTO sedvarsample (id,sample_samplecode,sedvar_sievesize,percentage) VALUES
 
 (606677,'RSMP_H_0001_Baseline',	'63',	0),
