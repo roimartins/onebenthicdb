@@ -14,7 +14,7 @@ DELETE FROM tablename
 ## BRING IN NEW DATA
 1. Start with 'sample' table
 
-# ADD DATA TO sample TABLE LINE BY LINE
+### ADD DATA TO sample TABLE LINE BY LINE
 Notes:
 Date needs to be in format:'2014-09-27',
 Missing info as NULL, 
@@ -67,6 +67,6 @@ FALSE,
 2,
 7);
 
-# REMOVE RECORD FROM TABLE LINE BY LINE ####
+### REMOVE RECORD FROM TABLE LINE BY LINE ####
 DELETE FROM sample
 WHERE samplecode = 'RSMP_H_0001_Baseline';
