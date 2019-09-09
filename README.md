@@ -2,7 +2,7 @@
 SQL code from Vertabelo to create OneBenthicDB
 
 # DATA IMPORT PROCEDURES
-#   POPULATE TABLES ####
+##   POPULATE TABLES ####
 #     ADD DATA FROM CSV FILE TO TABLE ####
 COPY taxasample FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\tables\table_taxasample.csv' WITH (FORMAT CSV, DELIMITER ',',NULL 'NA', HEADER);
 
