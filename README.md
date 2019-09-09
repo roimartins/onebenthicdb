@@ -105,5 +105,11 @@ INSERT INTO sedvarsample (id,sample_samplecode,sedvar_sievesize,percentage) VALU
 (606698,'RSMP_H_0001_Baseline',	'0',	4.129519564);
 
 ### ADD DATA TO sample TABLE USING CSV IMPORT
+NB Last id used was 33588
 COPY sample
 FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update sample humber baseline psa only.csv' DELIMITER ','NULL AS '[null]'  CSV HEADER;
+
+### ADD DATA TO sedvarsample TABLE USING CSV IMPORT
+NB Last id used was 616579
+COPY sedvarsample
+FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update sedvarsample humber baseline psa only.csv' DELIMITER ','  CSV HEADER;
