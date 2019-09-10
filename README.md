@@ -3,7 +3,9 @@ SQL code from Vertabelo to create OneBenthicDB
 
 # CHANGES TO DB STRUCTURE (IN PG ADMIN)
 
-
+# USEFUL CODE FOR QUERYING
+Use LIKE and % where items begings with
+select * from sample where samplecode LIKE 'RSMP_SC%'
 
 # DATA IMPORT PROCEDURES
 ## POPULATE TABLES ####
