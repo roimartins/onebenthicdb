@@ -127,7 +127,7 @@ FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table 
 
 
 4. Enter data into table 'samplestation'
-NB Last id used was 3949 (after import)
+NB Last id used was 4759 (after import)
 COPY samplestation FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update samplestation humber baseline psa only.csv' DELIMITER ',' CSV HEADER;
 
 5. Enter data into table 'sampleowner'
