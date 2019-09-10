@@ -110,12 +110,17 @@ COPY sample
 FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update sample humber baseline psa only.csv' DELIMITER ','NULL AS '[null]'  CSV HEADER;
 
 ### ADD DATA TO sedvarsample TABLE USING CSV IMPORT
-NB Last id used was 616579
+NB Last id used was 616579 (after import)
 COPY sedvarsample
 FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update sedvarsample humber baseline psa only.csv' DELIMITER ','  CSV HEADER;
 
 3. Enter data into table 'surveysample'
 ### ADD DATA to table surveysample
-NB Last id used was 33588
+NB Last id used was 33588 (after import)
 COPY surveysample
 FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update surveysample humber baseline psa only.csv' DELIMITER ',' CSV HEADER;
+
+
+4. Enter data into table 'samplestation'
+NB Last id used was 3949 (after import)
+COPY samplestation FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update samplestation humber baseline psa only.csv' DELIMITER ',' CSV HEADER;
