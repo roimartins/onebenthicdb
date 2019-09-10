@@ -7,6 +7,9 @@ SQL code from Vertabelo to create OneBenthicDB
 Use LIKE and % where items begings with
 select * from sample where samplecode LIKE 'RSMP_SC%'
 
+# DATA ISSUES WHICH NEED TO BE RESOLVED
+1. SC RSMP FAUNAL SAMPLES: PSA FOR <63um is split across all sieves. should be a total under 0mm siever. Has been resolved for PSA only samples
+
 # DATA IMPORT PROCEDURES
 ## POPULATE TABLES ####
 ### ADD DATA FROM CSV FILE TO TABLE ####
@@ -112,7 +115,7 @@ COPY sample
 FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update sample humber baseline psa only.csv' DELIMITER ','NULL AS '[null]'  CSV HEADER;
 
 ### ADD DATA TO sedvarsample TABLE USING CSV IMPORT
-NB Last id used was 616579 (after import)
+NB Last id used was 637171 (after import)
 COPY sedvarsample
 FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update sedvarsample humber baseline psa only.csv' DELIMITER ','  CSV HEADER;
 
