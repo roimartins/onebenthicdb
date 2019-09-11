@@ -116,7 +116,7 @@ COPY sample
 FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update sample humber baseline psa only.csv' DELIMITER ','NULL AS '[null]'  CSV HEADER;
 
 ### ADD DATA TO sedvarsample TABLE USING CSV IMPORT
-NB Last id used was 637171 (after import)
+NB Last id used was 652138 (after import)
 COPY sedvarsample
 FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update sedvarsample humber baseline psa only.csv' DELIMITER ','  CSV HEADER;
 
@@ -134,3 +134,16 @@ COPY samplestation FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA O
 5. Enter data into table 'sampleowner'
 NB Last id used was 34398 (after import)
 COPY sampleowner FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update sampleowner humber baseline psa only.csv' DELIMITER ',' CSV HEADER;
+
+## TO REPLACE ERRONEOUS RECORDS FROM TABLE sedvarsample
+
+# First remove incorrect records using code:
+DELETE FROM sedvarsample
+WHERE 
+sample_samplecode = 'RSMP_EC_0001_Baseline' OR
+sample_samplecode = 'RSMP_EC_0002_Baseline' OR
+sample_samplecode = 'RSMP_EC_0003_Baseline';
+
+then add correct data in normal way. Eg.
+COPY sedvarsample
+FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update sedvarsample humber baseline psa only.csv' DELIMITER ','  CSV HEADER;
