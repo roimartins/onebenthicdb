@@ -147,3 +147,15 @@ sample_samplecode = 'RSMP_EC_0003_Baseline';
 then add correct data in normal way. Eg.
 COPY sedvarsample
 FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update sedvarsample humber baseline psa only.csv' DELIMITER ','  CSV HEADER;
+
+
+# QUERING MULTIPLE TABLES (INNER JOIN)
+https://www.youtube.com/watch?v=7h9uuILngp0
+
+select samplecode,samplelat, samplelong,station_stationcode,stationlong,stationlat,baselinefaunalcluster_faunalcluster
+FROM sample, samplestation,station,cluster
+where sample.samplecode=samplestation.sample_samplecode
+AND samplestation.station_stationcode=station.stationcode
+AND sample.samplecode=cluster.sample_samplecode
+and station_stationcode like 'SC_%'
+ORDER BY station_stationcode;
