@@ -159,6 +159,16 @@ then add correct data in normal way. Eg.
 COPY sedvarsample
 FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update sedvarsample humber baseline psa only.csv' DELIMITER ','  CSV HEADER;
 
+6. Enter data into table 'taxasample'
+Start by getting taxon abundance matrix into correct format:
+- Ensure samplecodes match those in the sample table
+- Rename col 1 'samplecode' This col contains the taxon names (this is not a mistake)
+- Rename col 2 'qualifier'
+- Replace 'P' with '1'
+- Insert 'NA' to blank cells
+Save file as A2018benshort.csv
+Use 'get_abund_data_into_long_format.R' to change data into long format. This results in a file 'A2018abundlong.csv'
+Open 'A2018abundlong.csv' and insert col for 'id' and 'biomass'. If no biomass data enter [null]. NB Last id used was 1225216 (after import) 
 
 # QUERING MULTIPLE TABLES (INNER JOIN)
 https://www.youtube.com/watch?v=7h9uuILngp0
@@ -170,3 +180,4 @@ AND samplestation.station_stationcode=station.stationcode
 AND sample.samplecode=cluster.sample_samplecode
 and station_stationcode like 'SC_%'
 ORDER BY station_stationcode;
+
