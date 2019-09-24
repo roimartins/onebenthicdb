@@ -111,28 +111,39 @@ INSERT INTO sedvarsample (id,sample_samplecode,sedvar_sievesize,percentage) VALU
 (606698,'RSMP_H_0001_Baseline',	'0',	4.129519564);
 
 ### ADD DATA TO sample TABLE USING CSV IMPORT
-NB Last id used was 33588
+NB Last id used was 34348
 COPY sample
 FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update sample humber baseline psa only.csv' DELIMITER ','NULL AS '[null]'  CSV HEADER;
 
 ### ADD DATA TO sedvarsample TABLE USING CSV IMPORT
-NB Last id used was 652138 (after import)
+NB Last id used was 668858 (after import)
 COPY sedvarsample
 FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update sedvarsample humber baseline psa only.csv' DELIMITER ','  CSV HEADER;
 
+ADD DATA TO survey TABLE
+NB you can’t add data into table surveysample until there survey is there
+INSERT INTO survey (surveyname, programme, surveypurpose, datapubliclyavailable, data)VALUES('Anglian Regional Seabed Monitoring Programme 2018','RSMP','Monitoring',FALSE,'N')
+
 3. Enter data into table 'surveysample'
 ### ADD DATA to table surveysample
-NB Last id used was 34398 (after import)
+NB Last id used was 35158 (after import)
 COPY surveysample
 FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update surveysample humber baseline psa only.csv' DELIMITER ',' CSV HEADER;
 
+Make sure any new stations are added:
+INSERT INTO station(stationcode,stationlong,stationlat,stationnotes,stationsubgroup2,stationsubgroup1,	stationgroup) VALUES
+('A_0870',2.286766, 52.42388,NULL,NULL,'Anglian RSMP','RSMP'),
+('A_0871',2.255853,52.483941,NULL,NULL,'Anglian RSMP','RSMP'),
+('A_0872',1.990628,52.787012,NULL,NULL,'Anglian RSMP','RSMP'),
+('A_0873',2.130847,52.202034,NULL,NULL,'Anglian RSMP','RSMP');
+
 
 4. Enter data into table 'samplestation'
-NB Last id used was 4759 (after import)
+NB Last id used was 5519 (after import)
 COPY samplestation FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update samplestation humber baseline psa only.csv' DELIMITER ',' CSV HEADER;
 
 5. Enter data into table 'sampleowner'
-NB Last id used was 34398 (after import)
+NB Last id used was 35158 (after import)
 COPY sampleowner FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update sampleowner humber baseline psa only.csv' DELIMITER ',' CSV HEADER;
 
 ## TO REPLACE ERRONEOUS RECORDS FROM TABLE sedvarsample
