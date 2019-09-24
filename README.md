@@ -171,6 +171,10 @@ Save file as A2018benshort.csv
 Use 'get_abund_data_into_long_format.R' to change data into long format. This results in a file 'A2018abundlong.csv'
 Open 'A2018abundlong.csv' and insert col for 'id' and 'biomass'. If no biomass data enter [null]. NB Last id used was 1225216 (after import) 
 
+COPY taxasample FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\A2018abundlong.csv' DELIMITER ',' CSV HEADER;
+
+
+
 NB/ If any taxa are missing from table'taxa' then these will need to be entered manually using code:
 INSERT INTO faunal_data.taxa(taxonname,countable,aphiaID,matchtype,lsid,tsn,qualitystatus,taxonstatus,scientificname,authority,aphiaidaccepted,scientificnameaccepted,authorityaccepted,kingdom,phylum,"class","order","family",genus,subgenus,species,subspecies,ismarine,isbrackish,isfresh,isterrestrial,citation,taxonnotes,include,nonnative,conservationimportance,taxaqual_qualifier)
 VALUES('Aoridae (female)',true,101368,'exact','urn:lsid:marinespecies.org:taxname:101368',93440,'Checked by Taxonomic Editor','accepted','Aoridae','Stebbing, 1899',101368,'Aoridae','Stebbing, 1899','Animalia','Arthropoda','Malacostraca','Amphipoda','Aoridae','Aoridae','Aoridae',NULL,NULL,true,NULL,NULL,NULL,'Horton, T.; De Broyer, C. (2015). Aoridae Stebbing, 1899. In: Horton, T.; Lowry, J.; De Broyer, C.; Bellan-Santini, D.; Coleman, C. O.; Daneliya, M.; Dauvin, J-C.; Fiser, C.; Gasca, R.; Grabowski, M.; Guerra-Garcia, J. M.; Hendrycks, E.; Holsinger, J.; Hughes, L.; Jazdzewski, K.; Just, J.; Kamaltynov, R. M.; Kim, Y.-H.; King, R.; Krapp-Schickel, T.; LeCroy, S.; Lorz, A.-N.; Senna, A. R.; Serejo, C.; Sket, B.; Thomas, J.; Thurston, M.; Vader, W.; Vainola, R.; Vonk, R.; White, K.; Zeidler, W. World Amphipoda Database. Accessed through:  World Register of Marine Species at http://www.marinespecies.org/aphia.php?p=taxdetails&id=101368 on 2015-10-06',NULL,true,false,false,'F')
