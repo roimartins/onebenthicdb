@@ -2,6 +2,7 @@
 SQL code from Vertabelo to create OneBenthicDB
 
 # CHANGES TO DB STRUCTURE (IN PG ADMIN)
+Table 'taxasample' col 'taxa_taxaqual_qualifier' changed from Not NULL? Yes to Not NULL? No
 
 # USEFUL CODE FOR QUERYING
 Use LIKE and % where items begings with
