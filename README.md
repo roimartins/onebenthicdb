@@ -4,6 +4,9 @@ SQL code from Vertabelo to create OneBenthicDB
 # BACKUP THE DB
 RMC on database in PGAdmin4>Backup...>Enter filepath and filename 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\BACKUP\OneBenthic'>Press Backup button.
 
+# CREATE A COPY OF DB FOR TESTING/RESTORE
+Create DB in PGAmin4>RMC on db, select 'Restore'> select file 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\BACKUP\OneBenthic'> Press Restore button.
+
 # CHANGES TO DB STRUCTURE (IN PG ADMIN)
 Table 'taxasample' col 'taxa_taxaqual_qualifier' changed from Not NULL? Yes to Not NULL? No
 
