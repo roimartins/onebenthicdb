@@ -203,3 +203,12 @@ AND sample.samplecode=cluster.sample_samplecode
 and station_stationcode like 'SC_%'
 ORDER BY station_stationcode;
 
+## Output abund data at family level
+SELECT sample_samplecode,family,abund 
+FROM taxasample,faunal_data.taxa 
+WHERE
+ taxasample.taxa_taxonname=faunal_data.taxa.taxonname
+AND
+taxasample.taxa_taxaqual_qualifier=faunal_data.taxa.taxaqual_qualifier
+AND
+sample_samplecode like 'RSMP%_2018' ORDER BY sample_samplecode;
