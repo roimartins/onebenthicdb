@@ -204,22 +204,24 @@ and station_stationcode like 'SC_%'
 ORDER BY station_stationcode;
 
 ## Output abund data at family level
-SELECT sample_samplecode,family,abund 
-FROM taxasample,faunal_data.taxa 
-WHERE
- taxasample.taxa_taxonname=faunal_data.taxa.taxonname
-AND
-taxasample.taxa_taxaqual_qualifier=faunal_data.taxa.taxaqual_qualifier
-AND
-sample_samplecode like 'RSMP%_2018' ORDER BY sample_samplecode;
-
-
-## Output abund data at 'scientificnameaccepted' level
-SELECT sample_samplecode,scientificnameaccepted,abund
-FROM taxasample,faunal_data.taxa 
+SELECT sample_samplecode,family,abund,samplelat,samplelong
+FROM taxasample,faunal_data.taxa ,sample
 WHERE
  taxasample.taxa_taxonname=faunal_data.taxa.taxonname
 AND
 taxasample.taxa_taxaqual_qualifier=faunal_data.taxa.taxaqual_qualifier
 AND sample_samplecode like 'RSMP%_2018'
+AND sample.samplecode = taxasample.sample_samplecode
+ORDER BY sample_samplecode;
+
+
+## Output abund data at 'scientificnameaccepted' level
+SELECT sample_samplecode,scientificnameaccepted,abund,samplelat,samplelong
+FROM taxasample,faunal_data.taxa ,sample
+WHERE
+ taxasample.taxa_taxonname=faunal_data.taxa.taxonname
+AND
+taxasample.taxa_taxaqual_qualifier=faunal_data.taxa.taxaqual_qualifier
+AND sample_samplecode like 'RSMP%_2018'
+AND sample.samplecode = taxasample.sample_samplecode
 ORDER BY sample_samplecode;
