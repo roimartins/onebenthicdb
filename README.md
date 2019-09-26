@@ -212,3 +212,14 @@ AND
 taxasample.taxa_taxaqual_qualifier=faunal_data.taxa.taxaqual_qualifier
 AND
 sample_samplecode like 'RSMP%_2018' ORDER BY sample_samplecode;
+
+
+## Output abund data at 'scientificnameaccepted' level
+SELECT sample_samplecode,scientificnameaccepted,abund
+FROM taxasample,faunal_data.taxa 
+WHERE
+ taxasample.taxa_taxonname=faunal_data.taxa.taxonname
+AND
+taxasample.taxa_taxaqual_qualifier=faunal_data.taxa.taxaqual_qualifier
+AND sample_samplecode like 'RSMP%_2018'
+ORDER BY sample_samplecode;
