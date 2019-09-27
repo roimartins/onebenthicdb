@@ -229,3 +229,14 @@ ORDER BY sample_samplecode;
 
 7. Enter data into table 'cluster'. This is the csv output from the Faunal Cluster ID tool. Output file first needs converting into the correct format using R script 'get_fam_abund_into_format_for_faunalpredictIDapp.R'. Make sure file permission set to Everyone. Code for bringing in file:
 COPY cluster FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\clusterinput.csv' DELIMITER ','NULL AS '[null]' CSV HEADER;
+
+# Need to add new env variables to table 'envar'?
+INSERT INTO envvar (name,units) 
+VALUES ('ww_biomass_cnidaria','g'), 
+('ww_biomass_polychaeta','g'),
+('ww_biomass_oligochaeta','g'),
+('ww_biomass_other','g'); 
+
+8. Enter data into table 'envvarsample'. This is the csv biomass data (mjr taxonomic groups). Output file first needs converting into the correct format using R script 'get_fam_abund_into_format_for_faunalpredictIDapp.R' see section 'FORMAT CSV OF BIOMASS DATA FOR ENTRY INTO TABLE 'envvarsample'. Make sure file permission set to Everyone. Code for bringing in file:
+
+COPY envvarsample FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\data4envvarsample.csv' DELIMITER ','NULL AS '[null]' CSV HEADER;
