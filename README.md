@@ -26,6 +26,8 @@ This code gets rid of A's in col 'taxa_taxaqual_qualifier' in table 'taxasample'
 
 # WHERE ARE WE
 SC data entered into table 'sample'
+SC data entered into table 'survey'
+SC data entered into table 'surveysample'
 
 # DATA IMPORT PROCEDURES
 ## POPULATE TABLES ####
