@@ -245,3 +245,11 @@ COPY envvarsample FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ON
 Advice on storing images in postgres (https://supun-biz.blogspot.com/2011/03/easy-way-to-import-image-to-bytea-field.html)
 Convert jpeg to base64 (https://www.motobit.com/util/base64-decoder-encoder.asp)
 Convert base64 to jpeg (https://codebeautify.org/base64-to-image-converter)
+
+In postgres create a table called images then add 2 columns: image_name (type chr), image_data (type:btea)
+
+Copy base64 code and inset into the following query:
+INSERT INTO images (image_name, image_data)
+VALUES( 'image_one', decode('insert base64 code here', 'base64') );
+
+That's it!
