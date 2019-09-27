@@ -24,6 +24,9 @@ This code gets rid of A's in col 'taxa_taxaqual_qualifier' in table 'taxasample'
 2. Add sediment only samples from East Channel baseline (2014/15), BC and NW. I checked and there re no sed only samples for the east channel.
 3. A_2018 survey macroprocessing lab should be 7 (not applicable) for samples where no fauna collected. At present all stations set to 2.
 
+# WHERE ARE WE
+SC data entered into table 'sample'
+
 # DATA IMPORT PROCEDURES
 ## POPULATE TABLES ####
 ### ADD DATA FROM CSV FILE TO TABLE ####
