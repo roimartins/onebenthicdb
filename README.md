@@ -225,3 +225,7 @@ taxasample.taxa_taxaqual_qualifier=faunal_data.taxa.taxaqual_qualifier
 AND sample_samplecode like 'RSMP%_2018'
 AND sample.samplecode = taxasample.sample_samplecode
 ORDER BY sample_samplecode;
+
+
+7. Enter data into table 'cluster'. This is the csv output from the Faunal Cluster ID tool. Output file first needs converting into the correct format using R script 'get_fam_abund_into_format_for_faunalpredictIDapp.R'. Make sure file permission set to Everyone. Code for bringing in file:
+COPY cluster FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\clusterinput.csv' DELIMITER ','NULL AS '[null]' CSV HEADER;
