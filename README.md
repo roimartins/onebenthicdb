@@ -240,3 +240,8 @@ VALUES ('ww_biomass_cnidaria','g'),
 8. Enter data into table 'envvarsample'. This is the csv biomass data (mjr taxonomic groups). Output file first needs converting into the correct format using R script 'get_fam_abund_into_format_for_faunalpredictIDapp.R' see section 'FORMAT CSV OF BIOMASS DATA FOR ENTRY INTO TABLE 'envvarsample'. Make sure file permission set to Everyone. Code for bringing in file:
 
 COPY envvarsample FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\data4envvarsample.csv' DELIMITER ','NULL AS '[null]' CSV HEADER;
+
+# STORING IMAGES
+Advice on storing images in postgres (https://supun-biz.blogspot.com/2011/03/easy-way-to-import-image-to-bytea-field.html)
+Convert jpeg to base64 (https://www.motobit.com/util/base64-decoder-encoder.asp)
+Convert base64 to jpeg (https://codebeautify.org/base64-to-image-converter)
