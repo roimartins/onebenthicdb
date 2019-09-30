@@ -36,6 +36,8 @@ SC data entered into table 'surveysample'
 
 SC data entered into table 'samplestation'
 
+SC data entered into table 'sampleowner'
+
 # DATA IMPORT PROCEDURES
 ## POPULATE TABLES ####
 ### ADD DATA FROM CSV FILE TO TABLE ####
