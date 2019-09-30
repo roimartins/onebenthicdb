@@ -19,6 +19,9 @@ UPDATE taxasample SET taxa_taxaqual_qualifier = NULL
 WHERE taxa_taxaqual_qualifier = 'A';
 This code gets rid of A's in col 'taxa_taxaqual_qualifier' in table 'taxasample'
 
+To delete rows from table 'envvarsample' where col 'value' is [null] use:
+DELETE FROM envvarsample where value IS NULL
+
 # DATA ISSUES WHICH NEED TO BE RESOLVED
 1. SC RSMP FAUNAL SAMPLES: PSA FOR <63um is split across all sieves. should be a total under 0mm siever. Has been resolved for PSA only samples. Problem also for new Baseline East Channel benthic samples. ISSUE RESOLVED 11/09/2019
 2. Add sediment only samples from East Channel baseline (2014/15), BC and NW. I checked and there re no sed only samples for the east channel.
