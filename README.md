@@ -38,6 +38,8 @@ SC data entered into table 'samplestation'
 
 SC data entered into table 'sampleowner'
 
+SC data entered into table 'sedvarsample'
+
 # DATA IMPORT PROCEDURES
 ## POPULATE TABLES ####
 ### ADD DATA FROM CSV FILE TO TABLE ####
