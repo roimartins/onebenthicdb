@@ -168,7 +168,7 @@ NB Last id used was 6069 (after import)
 COPY samplestation FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update samplestation humber baseline psa only.csv' DELIMITER ',' CSV HEADER;
 
 5. Enter data into table 'sampleowner'
-NB Last id used was 35158 (after import)
+NB Last id used was 35708 (after import)
 COPY sampleowner FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update sampleowner humber baseline psa only.csv' DELIMITER ',' CSV HEADER;
 
 ## TO REPLACE ERRONEOUS RECORDS FROM TABLE sedvarsample
