@@ -139,7 +139,7 @@ INSERT INTO sedvarsample (id,sample_samplecode,sedvar_sievesize,percentage) VALU
 
 
 ### ADD DATA TO sedvarsample TABLE USING CSV IMPORT
-NB Last id used was 682113 (after import). Get sed data into wide format. Column headers: samplecode (e.g. 'RSMP_A_0001_Mon_2018' - col 1), samplecode (col2), samplecode (col3). Rows: A sed fraction (e.g. 63, 45, 31.5 ...) follows by percentage values by sample. Save file (e.g. A2018psashort.csv. Next change from wide (short) to long format using FILE 'get_psa_data_into_long_format.R'. Save long format data and import to table 'sedvarsample'. Dont forget about file permissions.
+NB Last id used was 682113 (after import). Get sed data into wide format. Column headers: samplecode (e.g. 'RSMP_A_0001_Mon_2018' - col 1), samplecode (col2), samplecode (col3). Rows: A sed fraction (e.g. 63, 45, 31.5 ... NB/ ensure headers in mm -see table'sedvar') follows by percentage values by sample. Save file (e.g. A2018psashort.csv. Next change from wide (short) to long format using FILE 'get_psa_data_into_long_format.R'. Save long format data and import to table 'sedvarsample'. Dont forget about file permissions.
 
 COPY sedvarsample
 FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update sedvarsample humber baseline psa only.csv' DELIMITER ','  CSV HEADER;
