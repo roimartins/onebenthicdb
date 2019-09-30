@@ -29,8 +29,12 @@ DELETE FROM envvarsample where value IS NULL
 
 # WHERE ARE WE
 SC data entered into table 'sample'
+
 SC data entered into table 'survey'
+
 SC data entered into table 'surveysample'
+
+SC data entered into table 'samplestation'
 
 # DATA IMPORT PROCEDURES
 ## POPULATE TABLES ####
@@ -160,7 +164,7 @@ INSERT INTO station(stationcode,stationlong,stationlat,stationnotes,stationsubgr
 
 
 4. Enter data into table 'samplestation'
-NB Last id used was 5519 (after import)
+NB Last id used was 6069 (after import)
 COPY samplestation FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update samplestation humber baseline psa only.csv' DELIMITER ',' CSV HEADER;
 
 5. Enter data into table 'sampleowner'
