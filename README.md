@@ -199,7 +199,7 @@ Start by getting taxon abundance matrix into correct format:
 - Insert 'NA' to blank cells
 Save file as A2018benshort.csv
 Use 'get_abund_data_into_long_format.R' to change data into long format. This results in a file 'A2018abundlong.csv'
-Open 'A2018abundlong.csv' and insert col for 'id' and 'biomass'. If no biomass data enter [null]. NB Last id used was 1225216 (1228860) (after import) 
+Open 'A2018abundlong.csv' and insert col for 'id' and 'biomass'. If no biomass data enter [null]. NB Last id used was 1225216 (1228861) (after import) 
 
 COPY taxasample FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\A2018abundlong.csv' DELIMITER ',' CSV HEADER;
 
