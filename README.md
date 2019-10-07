@@ -272,3 +272,27 @@ INSERT INTO images (image_name, image_data)
 VALUES( 'image_one', decode('insert base64 code here', 'base64') );
 
 That's it!
+
+
+## MANAGING DATABASE THROUGH COMMAND PROMPT
+Go to CMD. To gain access to console psql type: 
+
+psql -h azsclnxgis-ext01.postgres.database.azure.com -U kmc00_benthic_editor@azsclnxgis-ext01 -d one_benthic
+
+Add PW: inv........
+
+Once in the datbase console : 
+
+\d	to see tables
+\dn	to see list of schemas
+SELECT * FROM samples.sample limit 10;
+q	to escape from a query
+
+# To insert data into table 'faunal_data.taxasample'
+\copy faunal_data.taxasample FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\SC2017_18benlong.csv' DELIMITER ',' CSV HEADER;
+
+# To see data in table 'faunal_data.taxa'
+SELECT * FROM faunal_data.taxa where taxonname like 'PORIFERA%';
+
+# To insert missing taxa into table 'faunal_data.taxa'
+INSERT INTO faunal_data.taxa(taxonname,countable,aphiaID,matchtype,lsid,tsn,qualitystatus,taxonstatus,scientificname,authority,aphiaidaccepted,scientificnameaccepted,authorityaccepted,kingdom,phylum,"class","order","family",genus,subgenus,species,subspecies,ismarine,isbrackish,isfresh,isterrestrial,citation,taxonnotes,include,nonnative,conservationimportance,taxaqual_qualifier) VALUES('Gastropoda eggs',true,101,'exact','urn:lsid:marinespecies.org:taxname:101',69459,'Checked by Taxonomic Editor','accepted','Gastropoda','Cuvier, 1795',101,'Gastropoda','Cuvier, 1795','Animalia','Mollusca','Gastropoda','Gastropoda','Gastropoda','Gastropoda',NULL,NULL,NULL,true,true,true,true,'Gofas, S. (2009). Gastropoda. Accessed through:  World Register of Marine Species at http://www.marinespecies.org/aphia.php?p=taxdetails&id=101 on 2016-10-11',NULL,false,false,false,'E');
