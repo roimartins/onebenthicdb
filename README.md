@@ -296,3 +296,20 @@ SELECT * FROM faunal_data.taxa where taxonname like 'PORIFERA%';
 
 # To insert missing taxa into table 'faunal_data.taxa'
 INSERT INTO faunal_data.taxa(taxonname,countable,aphiaID,matchtype,lsid,tsn,qualitystatus,taxonstatus,scientificname,authority,aphiaidaccepted,scientificnameaccepted,authorityaccepted,kingdom,phylum,"class","order","family",genus,subgenus,species,subspecies,ismarine,isbrackish,isfresh,isterrestrial,citation,taxonnotes,include,nonnative,conservationimportance,taxaqual_qualifier) VALUES('Gastropoda eggs',true,101,'exact','urn:lsid:marinespecies.org:taxname:101',69459,'Checked by Taxonomic Editor','accepted','Gastropoda','Cuvier, 1795',101,'Gastropoda','Cuvier, 1795','Animalia','Mollusca','Gastropoda','Gastropoda','Gastropoda','Gastropoda',NULL,NULL,NULL,true,true,true,true,'Gofas, S. (2009). Gastropoda. Accessed through:  World Register of Marine Species at http://www.marinespecies.org/aphia.php?p=taxdetails&id=101 on 2016-10-11',NULL,false,false,false,'E');
+
+## Output abund data at family level (from OneBenthic on azsclnxgis-ext01)
+SELECT
+sample_samplecode,
+family,
+abund,
+samplelat,
+samplelong
+FROM
+faunal_data.taxasample,
+faunal_data.taxa,
+samples.sample
+WHERE
+taxasample.taxa_taxonname=faunal_data.taxa.taxonname AND taxasample.taxa_taxaqual_qualifier=faunal_data.taxa.taxaqual_qualifier AND
+sample_samplecode like 'RSMP_SC%_2017_18' AND
+ sample.samplecode = taxasample.sample_samplecode 
+ORDER BY sample_samplecode;
