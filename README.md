@@ -317,3 +317,6 @@ INSERT INTO faunal_data.taxa(taxonname,countable,aphiaID,matchtype,lsid,tsn,qual
 
 # To insert data into table 'cluster' (output from cluster ID tool)
 \COPY derived_data.cluster FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\clusterinput2.csv' DELIMITER ','NULL AS '[null]' CSV HEADER;
+
+# To insert data into table 'sedvarsample' (OneBenthic on azure)
+\COPY sediment_data.sedvarsample FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\A2018psalong.csv' DELIMITER ',' CSV HEADER;
