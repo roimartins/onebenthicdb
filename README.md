@@ -318,6 +318,9 @@ INSERT INTO associations.survey (surveyname, programme, surveypurpose, datapubli
 # To insert data into table 'surveysample'
 \COPY associations.surveysample FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update surveysample MD99.csv' DELIMITER ',' CSV HEADER;
 
+# To insert data into table 'sampleowner'
+\COPY associations.sampleowner FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update sampleowner MD99.csv' DELIMITER ',' CSV HEADER;
+
 # To insert data into table 'faunal_data.taxasample'
 \copy faunal_data.taxasample FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\SC2017_18benlong.csv' DELIMITER ',' CSV HEADER;
 
