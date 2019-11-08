@@ -343,3 +343,12 @@ Use file: GET WORMS OUTPUT INTO FORMAT FOR ONEBENTHIC.csv to get worms output in
 
 # To insert data into table 'sedvarsample' (OneBenthic on azure)
 \COPY sediment_data.sedvarsample FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\A2018psalong.csv' DELIMITER ',' CSV HEADER;
+
+# to update incorrect lat and longs
+http://www.postgresqltutorial.com/postgresql-update/
+UPDATE sample
+SET samplelat = '50.489304',
+samplelong = '0.875055'
+WHERE
+samplecode = '003.1.11155';
+correct data in 'east channel 2013 correct positions.csv'
