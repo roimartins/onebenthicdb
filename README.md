@@ -331,6 +331,9 @@ INSERT INTO associations.survey (surveyname, programme, surveypurpose, datapubli
 SELECT * FROM faunal_data.taxa where taxonname like 'PORIFERA%';
 
 # To insert missing taxa into table 'faunal_data.taxa'
+
+Can do this in pgadmin
+
 INSERT INTO faunal_data.taxa(taxonname,countable,aphiaID,matchtype,lsid,tsn,qualitystatus,taxonstatus,scientificname,authority,aphiaidaccepted,scientificnameaccepted,authorityaccepted,kingdom,phylum,"class","order","family",genus,subgenus,species,subspecies,ismarine,isbrackish,isfresh,isterrestrial,citation,taxonnotes,include,nonnative,conservationimportance,taxaqual_qualifier) VALUES('Gastropoda eggs',true,101,'exact','urn:lsid:marinespecies.org:taxname:101',69459,'Checked by Taxonomic Editor','accepted','Gastropoda','Cuvier, 1795',101,'Gastropoda','Cuvier, 1795','Animalia','Mollusca','Gastropoda','Gastropoda','Gastropoda','Gastropoda',NULL,NULL,NULL,true,true,true,true,'Gofas, S. (2009). Gastropoda. Accessed through:  World Register of Marine Species at http://www.marinespecies.org/aphia.php?p=taxdetails&id=101 on 2016-10-11',NULL,false,false,false,'E');
 
 # To insert data into table 'cluster' (output from cluster ID tool)
