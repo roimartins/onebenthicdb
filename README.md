@@ -306,6 +306,11 @@ Once in the datbase console :
 SELECT * FROM samples.sample limit 10;
 q	to escape from a query
 
+# To insert data into table 'sample'
+\COPY samples.sample (id, samplecode, samplelat, samplelong, waterdepth, year, month, date, grabsamplesize, macrosieve, samplecode2, psasubsample, samplenotes, treatment, inccol, samplephotowhole, samplephotoresidue, gear_gearcode, baselinesample, psaprocessinglab_id, macroprocessinglab_id) FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update sample MD99.csv' DELIMITER ','NULL AS '[null]' CSV HEADER;
+
+Note that date in format MM/DD/YYYY (08/11/2019)
+
 # To insert data into table 'faunal_data.taxasample'
 \copy faunal_data.taxasample FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\SC2017_18benlong.csv' DELIMITER ',' CSV HEADER;
 
