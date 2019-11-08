@@ -311,6 +311,10 @@ q	to escape from a query
 
 Note that date in format MM/DD/YYYY (08/11/2019)
 
+# To insert data into table 'survey'
+Do this in PG Admin (doesn't work in command line)
+INSERT INTO associations.survey (surveyname, programme, surveypurpose, datapubliclyavailable, data)VALUES('Median Deep 1999','EIA','Characterisation',false,'E');
+
 # To insert data into table 'faunal_data.taxasample'
 \copy faunal_data.taxasample FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\SC2017_18benlong.csv' DELIMITER ',' CSV HEADER;
 
