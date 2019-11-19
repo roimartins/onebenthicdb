@@ -352,3 +352,6 @@ samplelong = '0.875055'
 WHERE
 samplecode = '003.1.11155';
 correct data in 'east channel 2013 correct positions.csv'
+
+# to add a new column to a table
+ ALTER TABLE associations.station ADD COLUMN active boolean NOT NULL DEFAULT true;
