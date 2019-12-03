@@ -358,3 +358,29 @@ correct data in 'east channel 2013 correct positions.csv'
 
 # to update a column value in 
  UPDATE associations.station SET active = FALSE WHERE stationcode = 'EC_0470';
+
+## QUERYING REVISITED
+Syntax:
+SELECT tablename.colname, table.colname
+FROM table1 AS t1
+? JOIN table2 AS t2
+ON t1.colID = T2.colID
+WHERE condition(s)
+ORDER
+
+JOIN types:
+INNER - only returns matching rows
+LEFT - every row from left table
+RIGHT - every row from right table
+FULL - every row from both tables
+
+Use alias to avoid repeating table name with AS
+
+# Query to extract sediment data for all RSMP stations
+SELECT samst.station_stationcode, sam.samplecode, sed.sedvar_sievesize, sed.percentage, sam.year
+FROM samples.sample AS sam
+INNER JOIN sediment_data.sedvarsample AS sed
+ON sam.samplecode = sed.sample_samplecode
+INNER JOIN associations.samplestation AS samst
+ON sam.samplecode = samst.sample_samplecode
+ORDER BY station_stationcode, samplecode, sedvar_sievesize desc;
