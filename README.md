@@ -384,3 +384,12 @@ ON sam.samplecode = sed.sample_samplecode
 INNER JOIN associations.samplestation AS samst
 ON sam.samplecode = samst.sample_samplecode
 ORDER BY station_stationcode, samplecode, sedvar_sievesize desc;
+
+# Get faunal data by station
+SELECT s.samplecode,s.samplelat,s.samplelong,ts.worrmstaxa_taxonname, ts.abund,wt.aphia_aphiaid,a.worrms_validaphiaid,w.scientificname
+FROM public.sample as s
+INNER JOIN public.taxasample as ts ON s.samplecode= ts.sample_samplecode
+INNER JOIN faunal_data.worrmstaxa as wt ON wt.taxonname = ts.worrmstaxa_taxonname
+INNER JOIN faunal_data.aphia as a ON wt.aphia_aphiaid = a.aphiaid 
+INNER JOIN faunal_data.worrms as w ON w.validaphiaid = a.worrms_validaphiaid 
+WHERE s.samplecode = 'RSMP_A_0106_Baseline'
