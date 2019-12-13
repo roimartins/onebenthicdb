@@ -386,12 +386,14 @@ ON sam.samplecode = samst.sample_samplecode
 ORDER BY station_stationcode, samplecode, sedvar_sievesize desc;
 
 # Get faunal data by survey
-SELECT su.surveyname,s.samplecode,s.samplelat,s.samplelong,ts.worrmstaxa_taxonname,w.scientificname, a.worrms_validaphiaid,ts.abund
+SELECT su.surveyname,s.samplecode,s.samplelat,s.samplelong,ts.worrmstaxa_taxonname,w.scientificname,w.rank,ts.taxaqual_qualifier, tq.qualifiername,a.worrms_validaphiaid,ts.abund
 FROM public.survey as su
 INNER JOIN public.surveysample as ss ON ss.survey_surveyname = su.surveyname
 INNER JOIN public.sample as s ON ss.sample_samplecode = s.samplecode
 INNER JOIN public.taxasample as ts ON s.samplecode= ts.sample_samplecode
+INNER JOIN public.taxaqual as tq ON ts.taxaqual_qualifier = tq.qualifier
 INNER JOIN faunal_data.worrmstaxa as wt ON wt.taxonname = ts.worrmstaxa_taxonname
 INNER JOIN faunal_data.aphia as a ON wt.aphia_aphiaid = a.aphiaid 
 INNER JOIN faunal_data.worrms as w ON w.validaphiaid = a.worrms_validaphiaid 
-WHERE s.samplecode = 'RSMP_A_0106_Baseline'
+WHERE su.surveyname = 'Anglian Regional Seabed Monitoring Programme Baseline Benthic Survey 2014/2015'
+ORDER by s.samplecode
