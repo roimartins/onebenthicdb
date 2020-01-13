@@ -296,6 +296,8 @@ That's it!
 Go to CMD. To gain access to console psql type: 
 
 psql -h azsclnxgis-ext01.postgres.database.azure.com -U kmc00_benthic_editor@azsclnxgis-ext01 -d one_benthic
+Use this one from 13/01/2020:
+psql -h azsclnxgis-ext01.postgres.database.azure.com -U editors_one_benthic@azsclnxgis-ext01 -d one_benthic
 
 Add PW: inv........
 
