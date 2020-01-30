@@ -311,7 +311,13 @@ q	to escape from a query
 # To insert data into table 'sample'
 \COPY samples.sample (id, samplecode, samplelat, samplelong, waterdepth, year, month, date, grabsamplesize, macrosieve, samplecode2, psasubsample, samplenotes, treatment, inccol, samplephotowhole, samplephotoresidue, gear_gearcode, baselinesample, psaprocessinglab_id, macroprocessinglab_id) FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update sample MD99.csv' DELIMITER ','NULL AS '[null]' CSV HEADER;
 
-Note that date in format MM/DD/YYYY (08/11/2019)
+or
+
+\COPY samples.sample FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update sample 222 2011.csv' DELIMITER ',' CSV HEADER; 
+
+Note that date in format MM/DD/YYYY (08/11/2019). Make sure cols: geom, in_mpa and mpa_id are left blank
+
+
 
 # To insert data into table 'survey'
 Do this in PG Admin (doesn't work in command line)
