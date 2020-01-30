@@ -235,22 +235,22 @@ AND sample.samplecode = taxasample.sample_samplecode
 ORDER BY sample_samplecode;
 
 ## Output abund data at family level (from OneBenthic on azsclnxgis-ext01)
-SELECT
-sample_samplecode,
-family,
-abund,
-samplelat,
-samplelong
-FROM
-faunal_data.taxasample,
-faunal_data.taxa,
-samples.sample
-WHERE
-taxasample.taxa_taxonname=faunal_data.taxa.taxonname AND taxasample.taxa_taxaqual_qualifier=faunal_data.taxa.taxaqual_qualifier AND
-sample_samplecode like 'RSMP_SC%_2017_18' AND
-include=true AND
-sample.samplecode = taxasample.sample_samplecode 
-ORDER BY sample_samplecode;
+SELECT 
+su.surveyname,
+s.samplecode,
+s.samplelat,
+s.samplelong,
+w.scientificname,
+w.family,
+ts.abund 
+FROM associations.survey as su 
+INNER JOIN associations.surveysample as ss ON ss.survey_surveyname = su.surveyname 
+INNER JOIN samples.sample as s ON ss.sample_samplecode = s.samplecode 
+INNER JOIN faunal_data.taxasample as ts ON s.samplecode= ts.sample_samplecode 
+INNER JOIN faunal_data.worrmstaxa as wt ON wt.taxonname = ts.worrmstaxa_taxonname 
+INNER JOIN faunal_data.aphia as a ON wt.aphia_aphiaid = a.aphiaid 
+INNER JOIN faunal_data.worrms as w ON w.validaphiaid = a.worrms_validaphiaid 
+WHERE su.surveyname = 'Area 222 2011' ORDER by s.samplecode
 
 ## Output abund data at 'scientificnameaccepted' level
 SELECT sample_samplecode,scientificnameaccepted,abund,samplelat,samplelong
