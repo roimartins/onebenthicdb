@@ -352,6 +352,9 @@ Use file: GET WORMS OUTPUT INTO FORMAT FOR ONEBENTHIC.csv to get worms output in
 # To insert data into table 'sedvarsample' (OneBenthic on azure)
 \COPY sediment_data.sedvarsample FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\A2018psalong.csv' DELIMITER ',' CSV HEADER;
 
+# To insert missing record into table worrmstaxa
+INSERT INTO faunal_data.worrmstaxa (id,aphia_aphiaid,taxonname) VALUES (13080, 124672,'Thyone inermis')
+
 # to update incorrect lat and longs
 http://www.postgresqltutorial.com/postgresql-update/
 UPDATE sample
