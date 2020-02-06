@@ -418,3 +418,9 @@ INNER JOIN faunal_data.worrmstaxa as wt ON wt.taxonname = ts.worrmstaxa_taxonnam
 INNER JOIN faunal_data.aphia as a ON wt.aphia_aphiaid = a.aphiaid 
 INNER JOIN faunal_data.worrms as w ON w.validaphiaid = a.worrms_validaphiaid 
 WHERE su.surveyname = 'Area 222 2011' ORDER by s.samplecode
+
+# To find column names for table?
+SELECT column_name
+FROM information_schema.columns 
+WHERE table_schema = 'faunal_data' 
+AND table_name = 'worrms'
