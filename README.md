@@ -435,3 +435,8 @@ SQL code:
 INSERT INTO faunal_data.worrms
 (aphiaid,  url,  scientificname,  authority,  status,  unacceptreason,  taxonrankid,  "rank",  validaphiaid,  validname,  validauthority,  parentnameusageid,  kingdom,  phylum,  "class",  "order",  "family",  genus,  citation,  lsid,  ismarine,  isbrackish,  isfreshwater,  isterrestrial,  isextinct,  matchtype,  modified,  include,  nonnative,  conservationimportance,  countable,  commonname,  description,  habitat,  nativerange,  firstdiscovered,  pathway,  imagepath)
 VALUES (124672,'http://www.marinespecies.org/aphia.php?p=taxdetails&id=124672', 'Thyone inermis', 'Heller, 1868', 'accepted',NULL, 220, 'Species',124672, 'Thyone inermis','Heller, 1868', '146116','Animalia', 'Echinodermata', 'Holothuroidea', 'Dendrochirotida', 'Phyllophoridae', 'Thyone', 'WoRMS (2020). Thyone inermis Heller, 1868. Accessed at: http://www.marinespecies.org/aphia.php?p=taxdetails&id=124672 on 2020-02-06', 'urn:lsid:marinespecies.org:taxname:124672',TRUE,FALSE,FALSE,FALSE,NULL,'exact','2015-12-18T11:12:15Z',TRUE,FALSE,FALSE,TRUE,NULL,NULL,NULL,NULL,NULL,NULL,NULL)
+
+## DB Backup
+Using the command line in default directory: C:\Users\kmc00>
+
+pg_dump -U editors_one_benthic@azsclnxgis-ext01 -h azsclnxgis-ext01.postgres.database.azure.com -p 5432 one_benthic > one_benthicbackup13022020.sql
