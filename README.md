@@ -439,8 +439,9 @@ VALUES (124672,'http://www.marinespecies.org/aphia.php?p=taxdetails&id=124672', 
 ## DB Backup
 Using the command line in default directory: C:\Users\kmc00>
 
-pg_dump -U editors_one_benthic@azsclnxgis-ext01 -h azsclnxgis-ext01.postgres.database.azure.com -p 5432 one_benthic > one_benthicbackup13022020.sql
+pg_dump -U editors_one_benthic@azsclnxgis-ext01 -h azsclnxgis-ext01.postgres.database.azure.com -p 5432 -O one_benthic > one_benthicbackup13022020.sql
 
+(-O: no owner)
 ## Create new DB based on OneBenthicLive
 Using the command line in default directory: C:\Users\kmc00>
 
