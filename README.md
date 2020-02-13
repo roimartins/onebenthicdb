@@ -443,7 +443,12 @@ pg_dump -U editors_one_benthic@azsclnxgis-ext01 -h azsclnxgis-ext01.postgres.dat
 
 (-O: no owner)
 ## Create new DB based on OneBenthicLive
+Create a new DB in PgAdmin4 with same name as pg_dump backup file
+
+e.g. 'one_benthicbackup13022020'
+
 Using the command line in default directory: C:\Users\kmc00>
 
 psql -U postgres -h localhost -p 5433 one_benthicbackup13022020 < one_benthicbackup13022020.sql
+
 PW:postgres1234
