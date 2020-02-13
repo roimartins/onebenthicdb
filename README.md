@@ -440,3 +440,9 @@ VALUES (124672,'http://www.marinespecies.org/aphia.php?p=taxdetails&id=124672', 
 Using the command line in default directory: C:\Users\kmc00>
 
 pg_dump -U editors_one_benthic@azsclnxgis-ext01 -h azsclnxgis-ext01.postgres.database.azure.com -p 5432 one_benthic > one_benthicbackup13022020.sql
+
+## Create new DB based on OneBenthicLive
+Using the command line in default directory: C:\Users\kmc00>
+
+psql -U postgres -h localhost -p 5433 one_benthicbackup13022020 < one_benthicbackup13022020.sql
+PW:postgres1234
