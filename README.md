@@ -452,3 +452,24 @@ Using the command line in default directory: C:\Users\kmc00>
 psql -U postgres -h localhost -p 5433 one_benthicbackup13022020 < one_benthicbackup13022020.sql
 
 PW:postgres1234
+
+## To delete duplicated rows in a table
+# First find number of rows: 1236735
+SELECT DISTINCT * FROM faunal_data.taxasample;
+
+# Second, find number of distinct rows: 1164251
+SELECT DISTINCT ON (sample_samplecode,worrmstaxa_taxonname,taxaqual_qualifier,abund,biomass)* FROM faunal_data.taxasample
+
+# Third find duplicated rows (1236735-1164251=72484)
+Select sample_samplecode,worrmstaxa_taxonname,taxaqual_qualifier,abund,biomass,count(*)
+from faunal_data.taxasample
+group by sample_samplecode,worrmstaxa_taxonname,taxaqual_qualifier,abund,biomass
+having count(*)>1
+
+# Fourth, delete duplcate rows
+  with a as ( 
+  select row_number () over( partition by sample_samplecode, worrmstaxa_taxonname,taxaqual_qualifier, abund, biomass
+							order by sample_samplecode) dup ,count(id) over ( ) total,  id  
+from faunal_data.taxasample ) 
+delete from faunal_data.taxasample where id in ( select distinct id  from a where  dup > 1 )
+
