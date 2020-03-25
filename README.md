@@ -318,7 +318,7 @@ or
 
 \COPY samples.sample FROM 'C:\Users\kmc00\OneDrive - CEFAS\OneBenthicDB\RSMP PSA ONLY STATIONS\table update sample 222 2011.csv' DELIMITER ',' CSV HEADER; 
 
-Note that date in format MM/DD/YYYY (08/11/2019). Make sure cols: geom, in_mpa and mpa_id are left blank
+Note that date in format MM/DD/YYYY (08/11/2019). Make sure cols: geom, in_mpa and mpa_id are left blank. Null cols should be left blank
 
 
 
