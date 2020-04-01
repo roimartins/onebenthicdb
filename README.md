@@ -400,27 +400,41 @@ ON sam.samplecode = samst.sample_samplecode
 ORDER BY station_stationcode, samplecode, sedvar_sievesize desc;
 
 # Get faunal data by survey
-SELECT 
-su.surveyname,
+SELECT su.surveyname,
 s.samplecode,
 s.samplelat,
 s.samplelong,
+g.gearname,
+s.date,
+s.macrosieve,
 ts.worrmstaxa_taxonname,
-w.scientificname,
-w.rank,
 ts.taxaqual_qualifier,
- tq.qualifiername,
+w.validname,
+w.rank,
+tq.qualifiername,
 a.worrms_validaphiaid,
-ts.abund 
-FROM associations.survey as su 
+ts.abund,
+su.datapubliclyavailable,
+s.samplecode2,
+o.ownername,
+s.waterdepth,
+s.grabsamplesize,
+g.geartype_geartype
+                  
+FROM 
+associations.survey as su
 INNER JOIN associations.surveysample as ss ON ss.survey_surveyname = su.surveyname 
-INNER JOIN samples.sample as s ON ss.sample_samplecode = s.samplecode 
+INNER JOIN samples.sample as s ON ss.sample_samplecode = s.samplecode
+INNER JOIN gear.gear as g ON s.gear_gearcode = g.gearcode
 INNER JOIN faunal_data.taxasample as ts ON s.samplecode= ts.sample_samplecode 
-INNER JOIN faunal_data.taxaqual as tq ON ts.taxaqual_qualifier = tq.qualifier 
+LEFT JOIN faunal_data.taxaqual as tq ON ts.taxaqual_qualifier = tq.qualifier 
 INNER JOIN faunal_data.worrmstaxa as wt ON wt.taxonname = ts.worrmstaxa_taxonname 
 INNER JOIN faunal_data.aphia as a ON wt.aphia_aphiaid = a.aphiaid 
-INNER JOIN faunal_data.worrms as w ON w.validaphiaid = a.worrms_validaphiaid 
-WHERE su.surveyname = 'Area 222 2011' ORDER by s.samplecode
+INNER JOIN faunal_data.worrms as w ON w.validaphiaid = a.worrms_validaphiaid
+INNER JOIN associations.sampleowner as so ON so.sample_samplecode = s.samplecode
+INNER JOIN associations.owner as o ON so.owner_ownername = o.ownername
+WHERE su.surveyname = 'Area 457 Regional Seabed Monitoring Plan 2019' 
+ORDER by s.samplecode;
 
 # To find column names for table?
 SELECT column_name
