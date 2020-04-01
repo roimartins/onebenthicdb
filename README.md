@@ -240,7 +240,7 @@ su.surveyname,
 s.samplecode,
 s.samplelat,
 s.samplelong,
-w.scientificname,
+w.validname,
 w.family,
 ts.abund 
 FROM associations.survey as su 
