@@ -36,3 +36,25 @@ where st_intersects ( a.geom, b.geom)
 
 
 ```
+
+
+Example how to aggregate a One Benthic indicators by c-square and calculate average value by c-square
+
+```sql 
+
+
+with a as( 
+select * from samples.sample limit 100
+)  , b as ( 
+
+select b.c_Square, a.*  , b.geom as geomb 
+from a ,  spatial.c_squares_all_pol_marine_fao_div_eez  b 
+where st_intersects ( a.geom, b.geom) 
+
+ ) 
+ 
+ select avg(waterdepth) wd , c_square , geomb 
+ from b 
+ group by c_square , geomb
+
+```
